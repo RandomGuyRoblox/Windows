@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Step-by-Step Message</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .step {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step.active {
+      display: flex;
+    }
+
+    .message {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .button-group button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .button-group button:hover {
+      background: #555;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      width: 220px;
+      text-align: center;
+      background-color: #222;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Step 1 -->
+  <div id="step1" class="step active">
+    <div class="message">ברוך הבא! כאן המערכת האבטחה של המכשיר שלך, שמנו לב לאחרונה שהמחשב שלך שולח בקשות אוטומטיות לפתיחה של ערוצי יוטיוב כגון יובל המבולבל, מני ממטרה ועוד.. תרצה טיפים לאיך לטפל בזה? </div>
+    <div class="button-group">
+      <button onclick="goToStep(2)">כן</button>
+      <button onclick="clearScreen()">לא</button>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div id="step2" class="step">
+    <div class="message">שלום לך! שמנו לב שהחלטת לבחור בטיפים שלנו, אנחנו מעוד שמחים שבחרת בנו ויאללה בוא נתחיל במסע שלנו ביחד, לראשונה אנחנו נשמח שאתה תחליף סיסמה לאיימל שלך, ותקליד לאט לאט כדי שהמערכת תוכל לטעון עוד טיפים לעזרה.</div>
+    <div class="button-group">
+      <button onclick="goToStep(3)">עוד טיפים</button>
+      <button onclick="clearScreen()">סגירה</button>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div id="step3" class="step">
+    <div class="message">שלום! תודה שבחרת בקבלת עזרה נוספת! לצערי הצאט שלנו כאן מוגבל ואין לי איך לדבר איתך עוד.. אשמח לדבר איתך באיימל ולבדוק שהמחשב שלך מאובטח. במידע ואתה מסכים תקליד לי כאן תסיסמה ואני מיד יתחיל לעזור לך באבטחת המכשיר.</div>
+    <input type="text" placeholder="סיסמה" />
+  </div>
+
+  <script>
+    function goToStep(stepNumber) {
+      // Hide all steps
+      const steps = document.querySelectorAll('.step');
+      steps.forEach(step => step.classList.remove('active'));
+
+      // Show selected step
+      const selected = document.getElementById(`step${stepNumber}`);
+      if (selected) selected.classList.add('active');
+    }
+
+    function clearScreen() {
+      document.body.innerHTML = ""; // remove all content, keep background
+    }
+  </script>
+
+</body>
+</html>
